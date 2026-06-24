@@ -1,8 +1,8 @@
-from sentence_transformers import SentenceTransformer
 from langchain_community.vectorstores import FAISS
-from langchain_core.documents import Document
 from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_core.documents import Document
 import os
+
 
 def create_vector_store():
 
@@ -10,16 +10,25 @@ def create_vector_store():
 
     for file_name in os.listdir("resumes"):
 
-        file_path = os.path.join("resumes", file_name)
+        file_path = os.path.join(
+            "resumes",
+            file_name
+        )
 
-        with open(file_path, "r", encoding="utf-8") as file:
+        with open(
+                file_path,
+                "r",
+                encoding="utf-8"
+        ) as file:
 
             content = file.read()
 
             documents.append(
                 Document(
                     page_content=content,
-                    metadata={"file_name": file_name}
+                    metadata={
+                        "file_name": file_name
+                    }
                 )
             )
 
@@ -32,9 +41,13 @@ def create_vector_store():
         embeddings
     )
 
-    vector_store.save_local("vector_db")
+    vector_store.save_local(
+        "vector_db"
+    )
 
-    print("Vector Store Created Successfully")
+    print(
+        "Vector Store Created Successfully"
+    )
 
 
 def search_resumes(query):
