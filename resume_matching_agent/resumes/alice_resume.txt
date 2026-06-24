@@ -1,0 +1,11 @@
+Alice Smith
+
+Frontend Developer
+4 years experience
+
+Skills:
+React
+JavaScript
+Redux
+HTML
+CSS
